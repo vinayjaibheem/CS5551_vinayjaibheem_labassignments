@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <h3><b>Top 5 Trending Video for Keyword</b></h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-5 col-md-offset-3">
+        <input type="text" id="searchKey" placeholder="Search" style="width: 100%" x-webkit-speech>
+        <h4>Translated Value in Hindi:</h4>
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-primary" ng-click="searchVideo();getTransaltion()">Search</button>
+        <h4>{{translateValue}}</h4>
+    </div>
+</div>
+<div class="row">
+    <div id="ifrYT" class="col-md-offset-3" style="height: 500px; width: 680px">
+        <!--http://www.youtube.com/embed/{{ YTvid }}-->
+        <iframe type="text/html" ng-repeat="id in videoIdList" width="640" height="390" ng-src="{{ id.vurl }}" frameborder="0"></iframe>
+
+    </div>
+    <div>
+
+    </div>
+
+</div>
+<div class="row">
+    <div border-style="solid" class="col-md-6 col-md-offset-3" style="height: 500px; width: 680px">
+        <u>Note</u>: Used YouTube Data API as Knowledge base API to get top trending video based on user keyword and Google Text to Speech API
+    </div>
+</div>
