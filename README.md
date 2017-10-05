@@ -11,3 +11,5 @@ Lab 3 - https://github.com/vinayjaibheem/CS5551_vinayjaibheem_labassignments/wik
 Lab 4 - https://github.com/vinayjaibheem/CS5551_vinayjaibheem_labassignments/wiki/Lab-4-Assignment
 
 Lab 5 - https://github.com/vinayjaibheem/CS5551_vinayjaibheem_labassignments/wiki/Lab-5-Assignment
+
+Lab 6 - https://github.com/vinayjaibheem/CS5551_vinayjaibheem_labassignments/wiki/Lab-6-Assignment
