@@ -1,0 +1,40 @@
+<ion-view view-title="Nutrition Recommendation">
+  <ion-content>
+    <ion-list>
+    <ion-toggle  ng-click="callClick()">
+        Sleep
+    </ion-toggle>
+        
+        <div class="list">
+
+  <label class="item item-input item-select">
+    <div class="input-label">
+      Type
+    </div>
+    <select>
+      <option>Breakfast</option>
+      <option selected>Lunch</option>
+        <option>Snack</option>
+      <option>Dinner</option>
+    </select>
+  </label>
+
+</div>
+        
+        <label class="item item-input">
+  <i class="icon ion-search placeholder-icon"></i>
+  <input type="search" placeholder="Search" id="search_bar">
+</label> <br> 
+        
+        <button class="button button-block button-positive" ng-click="searchBtn()">
+  Search 
+</button>
+        <br><br>
+        <label>
+        <ion-radio ng-repeat="scan in recordsDis track by $index" class="display" value="{{scan.ndb_no}}"  ng-model="value"  ng-change='newValue(value)' on-last-repeat>{{ scan.shrt_desc }}<br><h5>pro = {{ scan.pro_factor }}, chol = {{ scan.cho_factor }}, fat = {{ scan.fat_factor }}</h5></ion-radio><br>    
+            
+            </div>
+        </label>
+    </ion-list>
+  </ion-content>
+</ion-view>
