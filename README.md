@@ -2,7 +2,7 @@
 Lab assignments repository
 ----------------------------------------------------------------------------------------------------
 
-Lab 1 - https://github.com/vinayjaibheem/CS5551_vinayjaibheem_labassignments/wiki/CS5551_vinayjaibheem_labassignments
+Lab 1 - https://github.com/vinayjaibheem/CS5551_vinayjaibheem_labassignments/wiki/Lab-1-Assignment
 
 Lab 2 - https://github.com/vinayjaibheem/CS5551_vinayjaibheem_labassignments/wiki/Lab-2-Assignment
 
