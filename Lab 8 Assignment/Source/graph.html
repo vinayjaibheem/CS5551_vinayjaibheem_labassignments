@@ -1,0 +1,36 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var h=0.725424;
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Arts', 0.99359],
+                ['Business', 0.00056177],
+                ['Computers', 0.00248644],
+                ['Games', 0.00114439],
+                ['Health', 0.000196248],
+                ['Home', 0.000930627],
+                ['Recreation', 0.000685639],
+                ['Science', 0.00023336],
+                ['Society', 0.000116992],
+                ['Sport', 0.000054915]
+            ]);
+
+            var options = {
+                title: 'My Daily Activities'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+<div id="piechart" style="width: 900px; height: 500px;"></div>
+</body>
+</html>

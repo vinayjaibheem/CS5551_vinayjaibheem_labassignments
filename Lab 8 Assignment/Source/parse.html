@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<style> div.center{
+    position: absolute;
+    left: 15%;
+    top: 20%;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+}
+    body{background-size: cover;}
+</style>
+<body background="clouds-below-peaks.jpg" >
+
+<h1></h1>
+<div id="id01"></div>
+<div id="id02"></div>
+<div id="id03"></div>
+<div id="id04"></div>
+<div id="id05"></div>
+<div id="id06"></div>
+<div id="id07"></div>
+<div id="id08"></div>
+<div id="id09"></div>
+<div id="id010"></div>
+<div id="id020"></div>
+
+<script>
+    var hello1 = localStorage.getItem('ur');
+    var xmlhttp = new XMLHttpRequest();
+    var url= "https://api.uclassify.com/v1/uclassify/topics/classify/?readKey=zp3PVGoy6XnZ&text="+hello1;
+    //var url= "https://api.uclassify.com/v1/uclassify/topics/classify/?readKey=zp3PVGoy6XnZ&text=hello";
+    xmlhttp.onreadystatechange=function() {
+        if (this.readyState == 4 && this.status == 200) {
+            myFunction(this.responseText);
+        }
+    }
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+
+    function myFunction(response) {
+        var obj = JSON.parse(response);
+        var a = obj.Arts;
+        var b =  obj.Business;
+        var c =  obj.Computers;
+        var d =  obj.Games;
+        var e =  obj.Health;
+        var f =  obj.Home;
+        var g =  obj.Recreation;
+        var h =  obj.Science;
+        var i =  obj.Society;
+        var j =  obj.Sports;
+
+
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Arts', a],
+                ['Business', b],
+                ['Computers', c],
+                ['Games', d],
+                ['Health', e],
+                ['Home', f],
+                ['Recreation', g],
+                ['Science', h],
+                ['Society', i],
+                ['Sport', j]
+            ]);
+
+            var options = {
+                title: 'Topics related to picture'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+
+
+     }
+
+</script>
+<div class="center" id="piechart" style="width: 900px; height: 400px;"></div>
+</body>
+</html>
+
+

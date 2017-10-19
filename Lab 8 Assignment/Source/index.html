@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Node Express Framework</title>
+    <script type="text/javascript" src="keys.js"></script>
+    <script type="text/javascript" src="index2.js"></script>
+    <script src="https://npmcdn.com/axios/dist/axios.min.js"></script>
+
+
+    <style>
+        div {
+            color: #000000;
+            font-size: 150%;
+            font-family: "Courier New";
+        }
+        div.j{
+            color: #000000;
+            font-size: 150%;
+            font-family:"Berlin Sans FB";
+        }
+        body{
+        background:url(bb.gif)no-repeat center fixed;
+        background-size: cover;
+        padding:15px;}
+    </style>
+    <style>
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        .button1{border-radius: 70%}
+
+        .imgName {
+
+
+            width: 130px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+        }
+
+        .imgName:focus {
+            width: 60%;
+        }
+        div.center{
+            position: absolute;
+            left: 0;
+            top: 40%;
+            width: 100%;
+            text-align: center;
+            font-size: 18px;
+        }</style>
+    <style>
+        div.center1{
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            text-align: center;
+            font-size: 18px;
+        }</style>
+    <style>
+        div.center2{
+            position: absolute;
+            left: 0;
+            top: 65%;
+            width: 100%;
+            text-align: center;
+            font-size: 18px;
+        }</style>
+</head>
+<body >
+<script>
+    function getsent()
+    {
+        var xmlhttp = new XMLHttpRequest();
+
+        var url = "https://api.uclassify.com/v1/uclassify/sentiment/classify/?readKey=zp3PVGoy6XnZ&text="+hello1;
+
+
+        xmlhttp.onreadystatechange=function() {
+            if (this.readyState == 4 && this.status == 200) {
+                myFunction(this.responseText);
+            }
+        }
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+        function myFunction(response) {
+            var obj = JSON.parse(response);
+
+            document.getElementById("demo").innerHTML ="Positive  "+
+                    obj.positive ;}
+        if (localStorage) {
+            pos=obj.positive;
+            neg=obj.negative;
+            localStorage.setItem('posi',pos);
+            localStorage.setItem('negi',neg);
+            window.alert("hello");
+        }
+        return true;
+    }
+
+//+ "Negative  " + obj.negative
+
+
+</script>
+<div><a href="parse.html"><button style="float: left" class="button"> go to graph </button></a></div>
+<div class="center">
+    <input class="imgName" id="imgurl" type="text"  placeholder="Image URL"/>
+    <button class="button button1"onclick="run(document.getElementById('imgurl').value)">Get tags!</button>
+</div>
+<div class="center1">
+    <div terget="frame1" id="tags"></div></div><div class="center2">
+
+   <br>
+    <div class="j" id="demo"></div></div>
+
+</body >
+</html>
