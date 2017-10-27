@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">-->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">-->
+    <!--<link rel="stylesheet" href="assets/css/form-elements.css">-->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+    <style>
+        h1 {
+            border-bottom: 3px solid #cc9900;
+            color: white;
+            font-size: 30px;
+        }
+        h2{
+            color:#4977c1;
+        }
+        table, th , td  {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        table tr:nth-child(odd) {
+            background-color: #f1f1f1;
+        }
+        table tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+        button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+    </style>
+    <script type="text/javascript" src="http://code.angularjs.org/1.1.1/angular.js"></script>
+    <script type="text/javascript" src="http://code.angularjs.org/1.1.1/angular-resource.js"></script>
+    <script type="text/javascript" src="http://code.angularjs.org/1.1.1/angular-sanitize.js"></script>
+    <script src="app.js"></script>
+    <script src="no.js"></script>
+
+</head>
+<body ng-app="demoMongo" id="body" background="images/logo1.jpg" style="background-size:cover">
+
+<script>
+    var xmlhttp = new XMLHttpRequest();
+    var url = "https://api.mongolab.com/api/1/databases/assdemo/collections/users?apiKey=H8MnTefTO7lzcoZz5aTDizF728JLQflX";
+    xmlhttp.onreadystatechange=function() {
+        if (this.readyState == 4 && this.status == 200) {
+            myFunction(this.responseText);
+        }
+    }
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+    function myFunction(response) {
+        var arr = JSON.parse(response);
+        var i;
+        var out = "<center><table> <tr><td><strong>Restaurant</strong></td><td><strong>Rating</strong></td><td><strong>Price</strong></td><td><strong>Address</strong></td><td><strong>Mongo ID</strong></td></tr>";
+        for(i = 0; i < arr.length; i++) {
+            out += "<tr><td>"+i+"</td><td>" +
+                arr[i].name +
+                "</td><td>" +
+                arr[i].rating +
+                "</td><td>" +
+                arr[i].price_level +
+                "</td><td>" +
+                arr[i].address +
+                "</td><td>" +
+                arr[i]._id["$oid"] +
+                "</td></tr>";
+        }
+        out += "</table></center>";
+        document.getElementById("id01").innerHTML = out;
+    }
+</script>
+
+
+<div ng-controller="MongoRestController" ng-init="disp()">
+
+    <!--<div id="container" class="g1">-->
+
+</div><br><br><br><br><br><br><br><br><br><br><br>
+<div align="center" class="fl1">
+    <h2 align="center"><strong>Update</strong></h2>
+    <form method="post" action="http://127.0.0.1:8081/update">
+
+        <input type="text" class="textbox1" name="id2" id="id2" placeholder="Restaurant" />
+        <input type="text" class="textbox1" name="fn" placeholder="Rating" />
+        <input type="text" class="textbox1" name="ln" placeholder="Price"/>
+        <input type="text" class="textbox1" name="ml" placeholder="Address"/>
+        <br><br><input type="submit" class="i1" value="Update" >
+    </form></div>
+<div align="center" class="fl2">
+    <h2 align="center"><strong>Delete</strong></h2>
+    ID:<br>
+    <form method="post" action="http://127.0.0.1:8081/delete" autocomplete="on">
+        <input type="text" class="textbox1" name="id1" id="id1" placeholder="Enter id" />
+        <br><br><input type="submit" class="i1" value="Delete"  >
+
+
+    </form></div>
+
+</div>
+
+</body>
+</html>
