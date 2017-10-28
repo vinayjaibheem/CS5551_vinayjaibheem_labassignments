@@ -22,13 +22,13 @@ app.post('/register', function (req, res) {
     });
 })
 var insertDocument = function(db, data, callback) {
-    db.collection('sample').insertOne( data, function(err, result) {
+    db.collection('labdemo').insertOne( data, function(err, result) {
         if(err)
         {
             res.write("Registration Failed, Error While Registering");
             res.end();
         }
-        console.log("Inserted a document into the lab9 collection.");
+        console.log("Inserted a document into the labdemo collection.");
         callback();
     });
 };
