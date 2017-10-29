@@ -44,22 +44,22 @@
         }
 
     </style>
-    <script type="text/javascript" src="http://code.angularjs.org/1.1.1/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script type="text/javascript" src="http://code.angularjs.org/1.1.1/angular-resource.js"></script>
     <script type="text/javascript" src="http://code.angularjs.org/1.1.1/angular-sanitize.js"></script>
     <script src="app.js"></script>
     <script src="no.js"></script>
 
 </head>
-<body ng-app="demoMongo" id="body" background="images/logo1.jpg" style="background-size:cover">
+<body ng-app="labdemo" id="body" background="images/logo1.jpg" style="background-size:cover">
 
 <script>
     var xmlhttp = new XMLHttpRequest();
-    var url = "https://api.mongolab.com/api/1/databases/assdemo/collections/users?apiKey=H8MnTefTO7lzcoZz5aTDizF728JLQflX";
+    var url = "https://api.mlab.com/api/1/databases/lab9/collections/labdemo?apiKey=H8MnTefTO7lzcoZz5aTDizF728JLQflX";
     xmlhttp.onreadystatechange=function() {
         if (this.readyState == 4 && this.status == 200) {
             myFunction(this.responseText);
-        }
+    }
     }
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
@@ -94,7 +94,6 @@
 <div align="center" class="fl1">
     <h2 align="center"><strong>Update</strong></h2>
     <form method="post" action="http://127.0.0.1:8081/update">
-
         <input type="text" class="textbox1" name="id2" id="id2" placeholder="Restaurant" />
         <input type="text" class="textbox1" name="fn" placeholder="Rating" />
         <input type="text" class="textbox1" name="ln" placeholder="Price"/>
@@ -107,8 +106,6 @@
     <form method="post" action="http://127.0.0.1:8081/delete" autocomplete="on">
         <input type="text" class="textbox1" name="id1" id="id1" placeholder="Enter id" />
         <br><br><input type="submit" class="i1" value="Delete"  >
-
-
     </form></div>
 
 </div>

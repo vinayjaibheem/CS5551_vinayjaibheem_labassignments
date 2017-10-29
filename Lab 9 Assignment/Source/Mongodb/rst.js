@@ -7,7 +7,7 @@ app.get('/getPlace', function (req, rest) {
         'req': []
     };
 
-    request('https://maps.googleapis.com/maps/api/place/search/json?location=39.0997,-94.5786&radius=1000&type=restaurant&sensor=true&key=AIzaSyCxWwwJeHAFgv3L_kTF6orO5WCnu8RorN8', function (error, response, body) {
+    request('https://maps.googleapis.com/maps/api/place/search/json?location=39.0997,-94.5786&radius=1000&type=restaurant&sensor=true&key=AIzaSyA2acrwQ4MTsITZyMqz8SowOp2dedcz1Ek', function (error, response, body) {
         //Check for error
         if(error){
             return console.log('Error:', error);
@@ -34,7 +34,7 @@ app.get('/getPlace', function (req, rest) {
 
 })
 
-var server = app.listen(8081, function () {
+var server = app.listen(8085, function () {
     var host = server.address().address
     var port = server.address().port
 

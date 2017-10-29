@@ -4,7 +4,7 @@ var bodyParser = require("body-parser");
 var express = require('express');
 var cors = require('cors');
 var app = express();
-var url = 'mongodb://vinayjois:luckisluck12@ds145019.mlab.com:45019/lab9';
+var url = 'mongodb://root:root@ds145019.mlab.com:45019/lab9';
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,6 +16,7 @@ app.post('/register', function (req, res) {
             res.end();
         }
         insertDocument(db, req.body, function() {
+            console.log("Connection established");
             res.write("Successfully inserted");
             res.end();
         });
@@ -32,9 +33,8 @@ var insertDocument = function(db, data, callback) {
         callback();
     });
 };
-var server = app.listen(8081,function () {
+var server = app.listen(8085,function () {
     var host = server.address().address
     var port = server.address().port
-
     console.log("Example app listening at http://%s:%s", host, port)
 })

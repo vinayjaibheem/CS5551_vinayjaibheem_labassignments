@@ -1,4 +1,4 @@
-var app = angular.module('demoMongo',[]);
+var app = angular.module('labdemo',[]);
 app.run(function ($http) {
     // Sends this header with any AJAX request
     $http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
@@ -7,48 +7,44 @@ app.run(function ($http) {
 });
 app.controller('MongoRestController',function($scope,$http){
     $scope.insertData = function(){
-
         var config = {
             headers : {
                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
             }
         }
-        var req = $http.post('http://127.0.0.1:8081/register',$scope.formData);
+        var req = $http.post('http://127.0.0.1:8085/register',$scope.formData);
         req.success(function(data, status, headers, config) {
             $scope.message = data;
             console.log(data);
         });
         req.error(function(data, status, headers, config) {
-            alert( "failure message: " + JSON.stringify({data: data}));
+            alert( "failure message 1: " + JSON.stringify({data: data}));
         });
 
     };
     $scope.delete=function () {
 
-
-        var req = $http.post('http://127.0.0.1:8081/delete');
+        var req = $http.post('http://127.0.0.1:8085/delete');
         req.success(function(data, status, headers, config) {
             console.log(data);
         });
         req.error(function(data, status, headers, config) {
-            alert( "failure message: " + JSON.stringify({data: data}));
+            alert( "failure message del: " + JSON.stringify({data: data}));
         });
     }
     $scope.update=function () {
-        var req = $http.post('http://127.0.0.1:8081/update',$scope.id1);
+        var req = $http.post('http://127.0.0.1:8085/update',$scope.id1);
         req.success(function(data, status, headers, config) {
             $scope.message = data;
             console.log(data);
         });
         req.error(function(data, status, headers, config) {
-            alert( "failure message: " + JSON.stringify({data: data}));
+            alert( "failure message update: " + JSON.stringify({data: data}));
         });
     }
     $scope.disp=function () {
-
-        var req = $http.post('http://127.0.0.1:8081/get-data');
+        var req = $http.post('http://127.0.0.1:8085/get-data');
         req.success(function(data, status, headers, config) {
-
             var col = [];
             for (var i = 0; i < data.length; i++) {
                 for (var key in data[i]) {
@@ -77,7 +73,7 @@ app.controller('MongoRestController',function($scope,$http){
             divContainer.appendChild(table);
         });
         req.error(function(data, status, headers, config) {
-            alert( "failure message: " + JSON.stringify({data: data}));
+            alert( "failure message last: " + JSON.stringify({data: data}));
         });
     }
 
