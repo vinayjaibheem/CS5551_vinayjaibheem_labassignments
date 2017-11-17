@@ -1,0 +1,20 @@
+{
+  "name": "Pranoop_Lab10",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "util",
+    "functional",
+    "server",
+    "client",
+    "browser"
+  ],
+  "author": "Pranoop Mutha",
+  "contributors": [],
+  "dependencies": {
+    "express": "^4.16.2",
+    "request": "^2.83.0"
+  }
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en"  data-ng-app="MyModule">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Place of Interest - Weather of Place</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="Css/home_page.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/shop-homepage.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <![endif]-->
+
+</head>
+
+<body>
+<img src="bgi.jpg" height="500" id="bg">
+
+
+<!-- Page Content -->
+<div class="container" ng-controller="MyController">
+    <div border-style="solid" class="row">
+
+        <div class="col-md-3">
+            <br><br><br>
+            <h4 ><strong>Enter to Search</strong></h4>
+            <input id="query" type="search" style="text-decoration-color: black; width: auto" placeholder="Search" ng-model="query"> <br><br>
+            <center><input type="button" value="Click" ng-click="retrieveData();calcWeather()"></center><br><br><br>
+            <table id="weather-canvas" border="4" style="background: #d0dbed; padding: 25px; visibility: hidden;color: #384a68; position: absolute; left: 200%">
+                <tr>
+                    <h4 id="weatherheader" style="visibility: hidden; color: #384a68; position: absolute; left: 150%"><strong>California's Weather</strong></h4>
+                </tr>
+                <tr>
+                    <td width="100" height="30" align="center"><strong>Temaparature</strong></td>
+                    <td width="150" height="30" align="center">{{sourcetemp}}</td>
+                </tr>
+                <!--<tr>
+                    <td width="100" height="30" align="center"><strong>Pressure</strong></td>
+                    <td width="150" height="30" align="center">{{sourcepre}}</td>
+                </tr>
+                <tr>
+                    <td width="100" height="30" align="center"><strong>Humidity </strong></td>
+                    <td width="150" height="30" align="center">{{sourcehum}}</td>
+                </tr>-->
+                <!--<tr>
+                    <td width="100" height="30" align="center"><strong>Wind</strong></td>
+                    <td width="150" height="30" align="center">{{sourcewind}}</td>
+                </tr>-->
+                <tr>
+                    <td width="100" height="30" align="center"><strong>Description</strong></td>
+                    <td width="150" height="30" align="center">{{sourcedes}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-md-9">
+            <br><br><br>
+            <div div align="center" id="results" class="row" style="visibility: hidden">
+
+                <div div align="center" class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h5 align="wrap" style="color: #384a68"><strong>{{name0}}</strong></h5>
+                            <p><b>Address: </b>{{address0}}</p>
+                        </div>
+                        <!--<div class="ratings">
+                            <h5 style="color: darkturquoise"><strong><p class="pull-right"><b>Contact: </b>{{contact0}}</p></strong></h5>
+                        </div>-->
+                    </div>
+                </div>
+                <div align="center" class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h5 align="wrap" style="color: #384a68"><strong>{{name1}}</strong></h5>
+                            <p><b>Address: </b>{{address1}}</p> </div>
+                        <!--<div class="ratings">
+                            <h5 style="color: darkturquoise"><strong><p class="pull-right"><b>Contact: </b>{{contact1}}</p></strong></h5>
+                        </div>-->
+                    </div>
+                </div>
+                <!--<div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h5 align="wrap"style="color:darkviolet"><strong>{{name2}}</strong></h5>
+                            <p><b>Address: </b>{{address2}}</p></div>
+                        <div class="ratings">
+                            <h5 style="color: darkturquoise"><strong><p class="pull-right"><b>Contact: </b>{{contact2}}</p></strong></h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="thumbnail">
+
+                        <div class="caption">
+                            <h5 align="wrap" style="color: darkviolet"><strong>{{name3}}</strong></h5>
+                            <p><b>Address: </b>{{address3}}</p>
+                        </div>
+                        <div class="ratings">
+                            <h5 style="color: darkturquoise"><strong><p class="pull-right"><b>Contact: </b>{{contact3}}</p></strong></h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h5 align="wrap" style="color: darkviolet"><strong>{{name4}}</strong></h5>
+                            <p><b>Address: </b>{{address4}}</p>
+                        </div>
+                        <div class="ratings">
+                            <h5 style="color: darkturquoise"><strong><p class="pull-right"><b>Contact: </b>{{contact4}}</p></strong></h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h5 align="wrap" style="color: darkviolet"><strong>{{name5}}</strong></h5>
+                            <p><b>Address: </b>{{address5}}</p>
+                        </div>
+                        <div class="ratings">
+                            <h5 style="color: darkturquoise"><strong><p class="pull-right"><b>Contact: </b>{{contact5}}</p></strong></h5>
+                        </div>
+                    </div>
+
+                </div>-->
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.container -->
+    <!-- jQuery -->
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>
+<script src="js/HomePage.js" type="application/javascript"></script>
+<script src="js/jquery.js" type="application/javascript"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>
